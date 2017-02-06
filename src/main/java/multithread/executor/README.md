@@ -97,6 +97,7 @@
     * 比Timer更好，可以创建线程池
     * ScheduledThreadPool可以通过ScheduledThreadPoolExecutor搞糟函数或newScheduledThreadPool工厂方法创建
 3. 为任务设定时限（超过时限，取消执行，客户端可以通过调用future.get(会抛出CancellationException)或者isCancelled方法判断是哪种情况）
+
     ```java
         ExecutorService executorService = Executors.newCachedThreadPool();
         // RequestTask implements Callable
