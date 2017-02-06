@@ -2,6 +2,7 @@
 
 ## 问题由来
 1. **串行执行任务**
+
     ```java
     public class Server {
         public static void main(String[] args) throws IOException {
@@ -15,6 +16,7 @@
     ```
    * 问题：单线程执行任务，效率低。无法提供高吞吐率或快速响应性
 2. **一个任务一个线程**
+
     ```java
     public class Server {
         public static void main(String[] args) throws IOException {
@@ -38,6 +40,7 @@
         - 资源消耗：内存等
         - 稳定性：过多的线程导致程序崩溃
 3. **Executor框架-线程池**
+
     ```java
     public class Server {
         private static final int THREAD_NUM = 100;
