@@ -1,4 +1,4 @@
-package multithread.executor;
+package multithread.task.executor;
 
 import java.util.ArrayList;
 import java.util.List;
