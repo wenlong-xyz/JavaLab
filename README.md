@@ -6,4 +6,4 @@ Java study and test code, including source code reading, new feature using, etc.
 2. [Java Task Execution 任务的执行](src/main/java/multithread/task/executor)
 3. [Java Task Cancel and Close 任务的取消与关闭](src/main/java/multithread/task/close)
 4. [Java Lock 锁](src/main/java/multithread/lock)
-5. [Java Pool 线程池](src/main/java/multithread/lock)
+5. [Java Pool 线程池](src/main/java/multithread/pool)
