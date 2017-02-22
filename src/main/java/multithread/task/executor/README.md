@@ -63,28 +63,26 @@
     ```
     * 限定线程数目，控制系统资源消耗
 
-## 线程池 Thread Pool
-（以下线程池，可以通过调用Executors的静态工厂方法创建）
+## [线程池 Thread Pool](https://github.com/ZongWenlong/JavaLab/tree/master/src/main/java/multithread/pool)
 
-1. **FixedThreadPool**
-    * 大小固定
-    * 每提交一个任务时就创建一个线程，知道达到线程池的最大数量，线程池的规模将不再变化
-2. **CacheedThreadPool**
-    * 可缓存的线程池
-    * 当线程池规模超过处理需求时，回收空闲线程；但需求增加时，则添加新的线程
-3. **SingleThreadExecutor**
-    * 单线程的Executor
-4. **ScheduleThreadPool**
-    * 创建一个固定长度的线程池，而且可以延迟或定时的方式来执行任务
 
 ## Executor 生命周期
-可以通过ExecutorService来维护Executor生命周期
+可以通过ExecutorService来维护Executor生命周期，Executor接口中只有execute方法。而
 
 1. **运行**
     * execute
+    * submit 与execute的区别：
+        - 接收参数不同，submit除了可以提交Runnable外还可以提交Callable对象
+            + Callable与Runnable相比，功能大致相似，但call函数有返回值，而run函数不能返回结果给客户端
+        - 有返回值Future，而execute没有。
+        - 方便Exception处理（通过捕获Future.get可以抛出的异常）
+        - 底层实现会调用execute
+    * invokeAll 提交一个Callable任务列表，是阻塞方法，即通过该方法提交给线程池的任务完成或者timeout结束前，主线程不会执行下一行代码
+    * invokeAny 提交一个Callable任务列表，不会返回Future对象，而是返回集合中某个Callable任务的执行结果，而且无法保证调用之后返回的结果是哪一个Callable任务的结果。如果一个任务执行完毕或抛出异常，方法会取消其他Callable的执行
 2. **关闭**
     * shutdown 方法，执行平缓的关闭过程：不再接受新的任务，同时等待已经提交的任务执行完成（报刊还未开始执行的任务）
     * shutdownNow 方法，执行粗暴的关闭过程：尝试取消所有运行中的任务，并且不在启动队列中尚未开始执行的任务
+    * isShutdown 方法
 3. **已终止**
     * isTerminated 方法，判断是否终止（所有任务执行完，会进入终止状态）
     * awaitTermination方法，等待终止（阻塞直到所有任务执行完或超时或该线程被中断）
