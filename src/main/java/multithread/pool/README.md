@@ -113,5 +113,6 @@ new  ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, millisecon
 ## Reference：
 1. 《Java并发编程实践》
 2. [聊聊并发（三）——JAVA线程池的分析和使用](http://www.infoq.com/cn/articles/java-threadPool)
+3. [线程池实例：使用Executors和ThreadPoolExecutor](http://www.importnew.com/8542.html)
 
 
