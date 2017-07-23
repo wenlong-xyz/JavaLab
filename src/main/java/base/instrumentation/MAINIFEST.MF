@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Premain-Class: com.intrumentation.Agent
+Created-By: 1.8.0_73
