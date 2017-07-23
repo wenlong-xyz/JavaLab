@@ -74,6 +74,7 @@
 
 3. **拓展：读写锁-ReadWriteLock**
     * 读读允许重入，带有写的请求不允许重入
+    * 允许锁降级，即同一个线程内获得写锁后，再获得读锁，之后释放写锁，此时锁就被降级为读锁
 
     ```java
         ReadWriteLock lock = new ReentrantReadWriteLock();

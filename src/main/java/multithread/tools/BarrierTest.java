@@ -14,19 +14,24 @@ public class BarrierTest {
         barrier = new CyclicBarrier(count, new Runnable() {
             @Override
             public void run() {
-                System.out.println("All people are here, we should do something...");
+                long id = Thread.currentThread().getId();
+                System.out.println(id + "All people are here, we should do something...");
                 // maybe i will set the endFlag = true
             }
         });
         this.workers = new Worker[count];
+        for (int i = 0; i < count; i++) {
+            this.workers[i] = new Worker();
+        }
     }
     private class Worker implements Runnable {
         @Override
         public void run() {
             while (!endFlag) {
+                long id = Thread.currentThread().getId();
                 // work
-                System.out.println("worker do something in current step");
-                System.out.println("work in current step is done");
+                System.out.println(id + "worker do something in current step");
+                System.out.println(id + "work in current step is done");
 
                 try {
                     // wait other worker finish their work
@@ -43,5 +48,10 @@ public class BarrierTest {
         for (Worker worker : workers) {
             new Thread(worker).start();
         }
+    }
+
+    public static void main(String[] args) {
+        BarrierTest test = new BarrierTest(10);
+        test.start();
     }
 }

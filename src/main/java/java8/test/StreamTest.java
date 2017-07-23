@@ -59,7 +59,7 @@ public class StreamTest {
         Integer[] evens= Stream.of(sixNums).filter(n -> n % 2 == 0).toArray(Integer[]::new);
 
         // reduce
-        String contact = Stream.of("A","B","C","D").reduce("",String::concat);
+        String contact = Stream.of("A","B","CC","D").reduce("",String::concat);
     }
 
     public static void supplierExample(){
